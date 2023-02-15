@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { BiPaste } from "react-icons/bi";
 
 const Form = () => {
    const [targetUrl, setTargetUrl] = useState("");
@@ -11,6 +12,10 @@ const Form = () => {
       e.preventDefault();
       if (!targetUrl) return;
       router.push(`/youtube?term=${targetUrl}`);
+   };
+
+   const handlePaste = () => {
+      navigator.clipboard.readText().then((clipText) => setTargetUrl(clipText));
    };
 
    const handleChange = (e) => {
@@ -23,7 +28,7 @@ const Form = () => {
             className="w-full flex flex-col sm:flex-row items-center justify-between gap-3"
          >
             <div
-               className={`flex items-center customBorder flex-1 ${
+               className={`flex items-center customBorder flex-1 w-full relative ${
                   targetUrl && "shadow-sm"
                }`}
             >
@@ -31,15 +36,21 @@ const Form = () => {
                   <FaSearch className="pl-[6px] text-gray-400 w-full" />
                </div>
                <input
-                  placeholder="Search tiktok..."
-                  type="text"
+                  placeholder="Paste your youtube url..."
+                  type="url"
                   value={targetUrl}
                   onChange={handleChange}
-                  className="p-2 outline-none bg-transparent flex-1"
+                  className="p-2 outline-none bg-transparent flex-1 w-full"
                />
+               <div
+                  onClick={handlePaste}
+                  className="flex items-center justify-center h-[20px] w-[20px] absolute right-2 cursor-pointer"
+               >
+                  <BiPaste size={30} className="text-gray-700 w-full" />
+               </div>
             </div>
             <button
-               className={`max-[768px]:w-full bg-black p-2 rounded-lg cursor-pointer text-gray-200 ${
+               className={`max-[767px]:w-full bg-black p-2 rounded-lg cursor-pointer text-gray-200 ${
                   !targetUrl && "hover:cursor-not-allowed"
                }`}
                type="submit"

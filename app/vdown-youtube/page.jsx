@@ -5,13 +5,12 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../page.module.css";
 
-import { FYoutube } from "react-icons/fa";
-import { TbMenu } from "react-icons/tb";
+import { FaYoutube } from "react-icons/fa";
 import Navbar from "../Navbar";
+import VdownPages from "../VdownPages";
+import VidDetails from "./VidDetails";
 
 const inter = Inter({ subsets: ["latin"] });
-
-const menus = ["about", "Privacy Policy", "terms & conditions"];
 
 let url = "https://youtu.be/mhLU9LZuy8Q";
 
@@ -38,7 +37,7 @@ async function YtDown({ searchParams }) {
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
          <Navbar />
 
-         <div className="flex md:w-[500px] justify-center flex-col items-center relative py-[4rem] gap-8">
+         <div className="flex md:w-[500px] justify-center flex-col items-center relative py-[2rem] gap-8">
             <div className="flex items-center">
                <Image
                   className={styles.logo}
@@ -49,34 +48,30 @@ async function YtDown({ searchParams }) {
                   priority
                />
                <div className={styles.thirteen}>
-                  <Image
-                     src="/vdown.png"
-                     alt="cloud_img"
-                     width={40}
-                     height={31}
-                     priority
-                  />
+                  <FaYoutube size={30} />
                </div>
             </div>
 
             <div className="flex w-full flex-col items-center gap-1">
                <Form />
-               <p className="text-center max-[768px]:px-1 text-xs">
+               <p
+                  className={`text-center max-[768px]:px-1 text-xs ${inter.className}`}
+               >
                   By clicking <span className="font-semibold">Get Video</span>{" "}
                   you accept our{" "}
-                  <span className="font-semibold hover:underline hover:cursor-pointer">
+                  <span className="font-semibold underline hover:cursor-pointer">
                      Terms & Conditions
                   </span>
                </p>
             </div>
          </div>
 
-         <div className=""></div>
-      </main>
-      // <div className="h-[100vh]">
-      //    {!fetchedData ? "Hello" : fetchedData.videoDetails.title}
+         <div className="">
+            <VidDetails />
+         </div>
 
-      // </div>
+         <VdownPages />
+      </main>
    );
 }
 

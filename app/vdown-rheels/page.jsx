@@ -5,9 +5,10 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../page.module.css";
 
-import { FYoutube } from "react-icons/fa";
+import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 import { TbMenu } from "react-icons/tb";
 import Navbar from "../Navbar";
+import VdownPages from "../VdownPages";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,13 +50,7 @@ async function YtDown({ searchParams }) {
                   priority
                />
                <div className={styles.thirteen}>
-                  <Image
-                     src="/vdown.png"
-                     alt="cloud_img"
-                     width={40}
-                     height={31}
-                     priority
-                  />
+                  <FaInstagram size={30} />
                </div>
             </div>
 
@@ -72,6 +67,8 @@ async function YtDown({ searchParams }) {
          </div>
 
          <div className=""></div>
+
+         <VdownPages />
       </main>
       // <div className="h-[100vh]">
       //    {!fetchedData ? "Hello" : fetchedData.videoDetails.title}
