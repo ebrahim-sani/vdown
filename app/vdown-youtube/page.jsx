@@ -31,7 +31,7 @@ async function YtDown({ searchParams }) {
    //    author: { subscriber_count, avatar },
    // } = videoDetails;
 
-   // console.log(fetchedData.videoDetails.likes);
+   // console.log(fetchedData.videoDetails);
 
    return (
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
@@ -67,7 +67,7 @@ async function YtDown({ searchParams }) {
          </div>
 
          <div className="">
-            <VidDetails />
+            {fetchedData && <VidDetails fetchedData={fetchedData} />}
          </div>
 
          <VdownPages />

@@ -11,7 +11,7 @@ const Form = () => {
    const handleSubmit = async (e) => {
       e.preventDefault();
       if (!targetUrl) return;
-      router.push(`/youtube?term=${targetUrl}`);
+      router.push(`/vdown-youtube?term=${targetUrl}`);
    };
 
    const handlePaste = () => {

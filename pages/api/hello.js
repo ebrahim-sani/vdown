@@ -1,5 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+import ytdl from "ytdl-core";
+import fs from "fs";
+
+export default async function handler(videoUrl, videoName) {
+   try {
+      const res = await ytdl(videoUrl).pipe(
+         fs.createWriteStream(`${videoName}.mp4`),
+      );
+   } catch (err) {
+      console.log(err);
+   }
 }

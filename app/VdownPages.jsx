@@ -4,6 +4,7 @@ import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 import { Inter } from "@next/font/google";
 
 import styles from "./page.module.css";
+import { pageData } from "@/Utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,7 @@ const VdownPages = () => {
                      Rheels Downloader <span>-&gt;</span>
                   </div>
                </h2>
-               <p className={inter.className}>
-                  Click and go to Rheels downloader page, it is just simple.
-                  Paste your link, click download and boom...its on your device.{" "}
-                  <br /> Easy right ;)
-               </p>
+               <p className={inter.className}>{pageData.instaDesc}</p>
             </Link>
 
             <Link
@@ -38,9 +35,7 @@ const VdownPages = () => {
                      YouTube Downloader <span>-&gt;</span>
                   </div>
                </h2>
-               <p className={inter.className}>
-                  Explore the Next.js 13 playground.
-               </p>
+               <p className={inter.className}>{pageData.ytDesc}</p>
             </Link>
 
             <Link
@@ -53,10 +48,7 @@ const VdownPages = () => {
                      TikTok Downloader <span>-&gt;</span>
                   </div>
                </h2>
-               <p className={inter.className}>
-                  Instantly deploy your Next.js site to a shareable URL with
-                  Vercel.
-               </p>
+               <p className={inter.className}>{pageData.tikDesc}</p>
             </Link>
          </div>
       </main>
