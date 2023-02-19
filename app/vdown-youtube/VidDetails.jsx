@@ -28,8 +28,9 @@ const VidDetails = ({ fetchedData }) => {
       },
       formats,
    } = fetchedData;
-   // const { size, elapsed, percentage, download, cancel, error, isInProgress } =
-   //    useDownloader({ mode: "no-cors" });
+
+   const { size, elapsed, percentage, download, cancel, error, isInProgress } =
+      useDownloader({ mode: "no-cors" });
 
    const videoFormat = ytdl.chooseFormat(formats, { quality: "135" });
 
@@ -109,7 +110,6 @@ const VidDetails = ({ fetchedData }) => {
                      <button
                         className={`flex items-center p-2 bg-black rounded-md text-gray-200 shadow-md ${inter.className}`}
                         // onClick={() => download(fileUrl, "filename.mp4")}
-                        onClick={() => downloadVideo(video_url, videoFormat)}
                      >
                         Download <FaArrowDown />
                      </button>
