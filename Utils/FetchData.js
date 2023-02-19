@@ -10,10 +10,13 @@ export const fetchData = async (url) => {
       player_response: {
          streamingData: { adaptiveFormats },
       },
+      formats,
    } = vidFormat;
 
    const qualityLabels = new Set();
    const filteredFormats = [];
+
+   console.log(vidFormat);
 
    for (const item of adaptiveFormats) {
       if (!qualityLabels.has(item.qualityLabel)) {
@@ -31,5 +34,5 @@ export const fetchData = async (url) => {
       }
    }
 
-   return { videoDetails, filteredFormats };
+   return { videoDetails, filteredFormats, formats };
 };

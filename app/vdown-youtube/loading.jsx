@@ -3,8 +3,8 @@ import { SyncLoader } from "react-spinners";
 
 const Loading = () => {
    return (
-      <div>
-         <SyncLoader color="#00000" />
+      <div className="h-[100vh] flex justify-center items-center">
+         <SyncLoader color="#000" />
       </div>
    );
 };
