@@ -6,33 +6,18 @@ export const fetchData = async (url) => {
    const vidFormat = await ytdl.getInfo(vidId);
    const { videoDetails } = vidInfo;
 
-   const {
-      player_response: {
-         streamingData: { adaptiveFormats },
-      },
-      formats,
-   } = vidFormat;
+   const { formats } = vidFormat;
 
-   const qualityLabels = new Set();
-   const filteredFormats = [];
-
-   console.log(vidFormat);
-
-   for (const item of adaptiveFormats) {
-      if (!qualityLabels.has(item.qualityLabel)) {
-         qualityLabels.add(item.qualityLabel);
-         filteredFormats.push(item);
-      } else {
-         for (const result of filteredFormats) {
-            if (result.qualityLabel === item.qualityLabel) {
-               if (item.itag < result.itag) {
-                  result.itag = item.itag;
-               }
-               break;
-            }
-         }
+   let activeVidFormats = [];
+   let activeAudFormats = [];
+   for (let k = 0; k < formats.length; k++) {
+      const vidFormat = formats[k];
+      if (vidFormat.hasVideo === true && vidFormat.hasAudio === true) {
+         activeVidFormats.push(vidFormat);
+      } else if (vidFormat.hasVideo === false && vidFormat.hasAudio === true) {
+         activeAudFormats.push(vidFormat);
       }
    }
 
-   return { videoDetails, filteredFormats, formats };
+   return { videoDetails, formats, activeVidFormats, activeAudFormats };
 };

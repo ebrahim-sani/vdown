@@ -12,26 +12,12 @@ import VidDetails from "./VidDetails";
 
 const inter = Inter({ subsets: ["latin"] });
 
-let url = "https://youtu.be/mhLU9LZuy8Q";
-
 async function YtDown({ searchParams }) {
    let fetchedData;
    if (searchParams.term) {
       const result = await fetchData(searchParams.term);
       fetchedData = result;
    }
-
-   // const { videoDetails, filteredFormats } = fetchedData;
-   // const {
-   //    title,
-   //    viewCount,
-   //    publishDate,
-   //    ownerChannelName,
-   //    thumbnails,
-   //    author: { subscriber_count, avatar },
-   // } = videoDetails;
-
-   // console.log(fetchedData.videoDetails);
 
    return (
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
