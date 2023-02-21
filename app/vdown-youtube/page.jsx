@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { fetchData } from "@/Utils/FetchData";
 import Form from "./Form";
 import Image from "next/image";
@@ -9,17 +9,13 @@ import { FaYoutube } from "react-icons/fa";
 import Navbar from "../Navbar";
 import VdownPages from "../VdownPages";
 import VidDetails from "./VidDetails";
-import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
 async function YtDown({ searchParams }) {
    let fetchedData;
    if (searchParams.term) {
-      // const result = await fetchData(searchParams.term, reval);
-      const result = await fetchData(searchParams.term, {
-         caches: "no-store",
-      });
+      const result = await fetchData(searchParams.term);
       fetchedData = result;
    }
 
@@ -56,11 +52,9 @@ async function YtDown({ searchParams }) {
             </div>
          </div>
 
-         {fetchedData && (
-            <Suspense fallback={<Loading />}>
-               <VidDetails fetchedData={fetchedData} />
-            </Suspense>
-         )}
+         <div className="">
+            {fetchedData && <VidDetails fetchedData={fetchedData} />}
+         </div>
 
          <VdownPages />
       </main>
