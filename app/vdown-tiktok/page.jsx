@@ -1,39 +1,23 @@
 import React from "react";
-import { fetchData } from "@/Utils/FetchData";
 import Form from "./Form";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../page.module.css";
 
-import { FYoutube, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
+import { FaTiktok } from "react-icons/fa";
 import { TbMenu } from "react-icons/tb";
 import Navbar from "../Navbar";
 import VdownPages from "../VdownPages";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const menus = ["about", "Privacy Policy", "terms & conditions"];
-
-let url = "https://youtu.be/mhLU9LZuy8Q";
-
 async function YtDown({ searchParams }) {
-   let fetchedData;
-   if (searchParams.term) {
-      const result = await fetchData(searchParams.term);
-      fetchedData = result;
-   }
-
-   // const { videoDetails, filteredFormats } = fetchedData;
-   // const {
-   //    title,
-   //    viewCount,
-   //    publishDate,
-   //    ownerChannelName,
-   //    thumbnails,
-   //    author: { subscriber_count, avatar },
-   // } = videoDetails;
-
-   // console.log(fetchedData.videoDetails.likes);
+   // let fetchedData;
+   // if (searchParams.term) {
+   //    const result = await fetchData(searchParams.term);
+   //    fetchedData = result;
+   // }
+   // console.log(fetchData);
 
    return (
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">

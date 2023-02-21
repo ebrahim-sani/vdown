@@ -15,7 +15,10 @@ const inter = Inter({ subsets: ["latin"] });
 async function YtDown({ searchParams }) {
    let fetchedData;
    if (searchParams.term) {
-      const result = await fetchData(searchParams.term);
+      // const result = await fetchData(searchParams.term, reval);
+      const result = await fetchData(searchParams.term, {
+         next: { revalidate: 5 },
+      });
       fetchedData = result;
    }
 

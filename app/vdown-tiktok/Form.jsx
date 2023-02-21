@@ -11,7 +11,7 @@ const Form = () => {
    const handleSubmit = async (e) => {
       e.preventDefault();
       if (!targetUrl) return;
-      router.push(`/youtube?term=${targetUrl}`);
+      router.push(`/vdown-tiktok?term=${targetUrl}`);
    };
 
    const handlePaste = () => {
@@ -36,7 +36,7 @@ const Form = () => {
                   <FaSearch className="pl-[6px] text-gray-400 w-full" />
                </div>
                <input
-                  placeholder="Paste your youtube url..."
+                  placeholder="Paste your TikTok url..."
                   type="url"
                   value={targetUrl}
                   onChange={handleChange}
