@@ -18,7 +18,7 @@ async function YtDown({ searchParams }) {
    if (searchParams.term) {
       // const result = await fetchData(searchParams.term, reval);
       const result = await fetchData(searchParams.term, {
-         next: { revalidate: 5 },
+         caches: "no-store",
       });
       fetchedData = result;
    }
