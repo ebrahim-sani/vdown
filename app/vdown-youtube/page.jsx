@@ -56,7 +56,7 @@ async function YtDown({ searchParams }) {
          </div>
 
          <div className="">
-            {fetchedData && <VidDetails fetchedData={fetchedData} />}
+            {fetchedData ? <VidDetails fetchedData={fetchedData} /> : "..."}
          </div>
 
          <VdownPages />
