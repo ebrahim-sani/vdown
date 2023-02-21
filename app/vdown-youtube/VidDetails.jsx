@@ -19,9 +19,6 @@ const VidDetails = ({ fetchedData }) => {
       activeAudFormats,
    } = fetchedData;
    const router = useRouter();
-   if (!fetchedData) {
-      router.refresh();
-   }
 
    return (
       <>

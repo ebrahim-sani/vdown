@@ -9,6 +9,7 @@ import { FaYoutube } from "react-icons/fa";
 import Navbar from "../Navbar";
 import VdownPages from "../VdownPages";
 import VidDetails from "./VidDetails";
+import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 

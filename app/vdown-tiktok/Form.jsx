@@ -12,6 +12,7 @@ const Form = () => {
       e.preventDefault();
       if (!targetUrl) return;
       router.push(`/vdown-tiktok?term=${targetUrl}`);
+      router.refresh();
    };
 
    const handlePaste = () => {
