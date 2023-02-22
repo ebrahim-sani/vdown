@@ -8,27 +8,10 @@ import styles from "../page.module.css";
 import { FaYoutube } from "react-icons/fa";
 import Navbar from "../Navbar";
 import VdownPages from "../VdownPages";
-import VidDetails from "./VidDetails";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// async function getData(url) {
-//    const data = await fetch(url, { cache: "no-store" });
-//    return data.json();
-// }
-
-async function YtDown({ searchParams }) {
-   // let fetchedData;
-   // if (searchParams.term) {
-   //    const result = await getData(
-   //       "https://vdown-api.vercel.app/api/get-video-info/https://youtu.be/0Qv7Pe-FvNs",
-   //    );
-   //    console.log(result);
-   //    fetchedData = result;
-   // }
-
-   // console.log(fetchedData);
-
+async function YtDown() {
    return (
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
          <Navbar />
@@ -60,10 +43,6 @@ async function YtDown({ searchParams }) {
                   </span>
                </p>
             </div>
-         </div>
-
-         <div className="">
-            {/* {fetchedData && <VidDetails fetchedData={fetchedData} />} */}
          </div>
 
          <VdownPages />
