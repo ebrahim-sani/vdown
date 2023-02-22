@@ -57,22 +57,20 @@ async function YtDown() {
             <VdownPages />
          </div>
 
-         <div>
-            {showcaseData.map((showcase, i) => (
-               <div
-                  key={i}
-                  className={`flex flex-col gap-6 flex-1 max-[768px]:p-2 md:min-h-[100vh] px-[1rem] max-[768px]:rounded-md md:px-[12rem] md:py-[2rem] items-center justify-start md:justify-center max-[768px]:shadow-md ${styles.card} shadow-sm customBorder`}
-               >
-                  <Showcase
-                     index={i}
-                     pageTitle={i === 0 && "How to Use"}
-                     title={showcase.title}
-                     description={showcase.description}
-                     imgUrl={showcase.imgUrl}
-                  />
-               </div>
-            ))}
-         </div>
+         {showcaseData.map((showcase, i) => (
+            <div
+               key={i}
+               className={`flex flex-col gap-6 flex-1 max-[768px]:p-2 md:min-h-[100vh] px-[1rem] max-[768px]:rounded-md md:px-[12rem] md:py-[2rem] items-center justify-start md:justify-center max-[768px]:shadow-md ${styles.card} shadow-sm customBorder`}
+            >
+               <Showcase
+                  index={i}
+                  pageTitle={i === 0 && "How to Use"}
+                  title={showcase.title}
+                  description={showcase.description}
+                  imgUrl={showcase.imgUrl}
+               />
+            </div>
+         ))}
       </main>
    );
 }
