@@ -11,11 +11,32 @@ export const deskMenus = ["About", "Privacy Policy", "Terms & Conditions"];
 
 export const pageData = {
    instaDesc:
-      "Tiktok downloader has got your back! Try it and watch the magic happen - your file will materialize on your device in no time! Its like summoning a genie, only with less rubbing and more clicking. Give it a try and see for yourself",
+      "Get the URL or link of the video you want to download. Make sure its a YouTube video otherwise it won't work.",
 
    ytDesc:
-      "The YouTube downloader is the bomb.com! Paste your video link and hit up that Get Video button like it's no body's business! Boom shakalaka, your device is now proud owner of that sweet, sweet video. It's like taking candy from a baby, only less creepy and more legal. Get on it, fam!",
+      "Paste the link in the input field and click Search Video button. That will go and get the data of your target video",
 
    tikDesc:
-      "Get your file faster than a cat on catnip with the TikTok downloader! Copy your link, paste it, and hit up that Get button, and voila! It's like a magic trick, but without the cheesy cape and top hat. Try it out and thank us later.",
+      "After selecting format for the video you want to download, hit the Get Video button..That will take you to a new tab. Click 3 dot option, and then Download.",
 };
+
+export const showcaseData = [
+   {
+      title: "Click The Option",
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias vel deserunt ipsa dicta quis odit. Facilis assumenda amet ipsam sint reiciendis explicabo, consequatur corrupti culpa, voluptates, eum illo ullam quasi?",
+      imgUrl: "/showcase.png",
+   },
+   {
+      title: "Click The Option",
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias vel deserunt ipsa dicta quis odit. Facilis assumenda amet ipsam sint reiciendis explicabo, consequatur corrupti culpa, voluptates, eum illo ullam quasi?",
+      imgUrl: "/showcase.png",
+   },
+   {
+      title: "Click The Option",
+      description:
+         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias vel deserunt ipsa dicta quis odit. Facilis assumenda amet ipsam sint reiciendis explicabo, consequatur corrupti culpa, voluptates, eum illo ullam quasi?",
+      imgUrl: "/showcase.png",
+   },
+];

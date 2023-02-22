@@ -65,7 +65,7 @@ const Form = () => {
                type="submit"
                disabled={!targetUrl}
             >
-               Get Video
+               Search Video
             </button>
          </form>
       </div>

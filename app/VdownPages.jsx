@@ -1,10 +1,11 @@
-import Link from "next/link";
 import React from "react";
-import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
+import { MdScreenSearchDesktop } from "react-icons/md";
+import { SlOptionsVertical } from "react-icons/sl";
 import { Inter } from "@next/font/google";
 
 import styles from "./page.module.css";
 import { pageData } from "@/Utils";
+import { BiLink } from "react-icons/bi";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,44 +13,35 @@ const VdownPages = () => {
    return (
       <main>
          <div className={`${styles.grid} gap-2`}>
-            <Link
-               href="/vdown-rheels"
-               className={`${styles.card} customBorder`}
-            >
+            <div className={`${styles.card} shadow-sm customBorder`}>
                <h2 className={inter.className}>
                   <div className="flex items-center gap-3">
-                     <FaInstagram size={30} />
-                     Rheels Downloader <span>-&gt;</span>
+                     <BiLink size={30} />
+                     Get The Link of Your Video
                   </div>
                </h2>
                <p className={inter.className}>{pageData.instaDesc}</p>
-            </Link>
+            </div>
 
-            <Link
-               href="/vdown-youtube"
-               className={`${styles.card} customBorder`}
-            >
+            <div className={`${styles.card} shadow-sm customBorder`}>
                <h2 className={inter.className}>
                   <div className="flex items-center gap-3">
-                     <FaYoutube size={30} />
-                     YouTube Downloader <span>-&gt;</span>
+                     <MdScreenSearchDesktop size={30} />
+                     Paste in The Input Field & Search
                   </div>
                </h2>
                <p className={inter.className}>{pageData.ytDesc}</p>
-            </Link>
+            </div>
 
-            <Link
-               href="/vdown-tiktok"
-               className={`${styles.card} customBorder`}
-            >
+            <div className={`${styles.card} shadow-sm customBorder`}>
                <h2 className={inter.className}>
                   <div className="flex items-center gap-3">
-                     <FaTiktok size={30} />
-                     TikTok Downloader <span>-&gt;</span>
+                     <SlOptionsVertical size={20} />
+                     Click 3-Dot Option & Download
                   </div>
                </h2>
                <p className={inter.className}>{pageData.tikDesc}</p>
-            </Link>
+            </div>
          </div>
       </main>
    );

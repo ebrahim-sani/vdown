@@ -3,7 +3,7 @@ import { FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import Navbar from "@/app/Navbar";
 import VidDetails from "../VidDetails";
-import styles from "../../page.module.css";
+import styles from "../page.module.css";
 import { Inter } from "@next/font/google";
 import Error from "./error";
 
@@ -45,17 +45,14 @@ const page = async ({ params: { searchParam } }) => {
       });
 
    const response = await result.json();
-   // console.log(response);
 
    if (!response) {
       throw new Error();
    }
 
    const {
-      data: { videoDetails, activeVidFormats, activeAudFormats },
+      data: { videoDetails, activeVidFormats },
    } = response;
-   // console.log(activeVidFormats);
-   // console.log(activeAudFormats);
 
    return (
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
@@ -95,12 +92,9 @@ const page = async ({ params: { searchParam } }) => {
                <VidDetails
                   videoDetails={videoDetails}
                   activeVidFormats={activeVidFormats}
-                  activeAudFormats={activeAudFormats}
                />
             )}
          </div>
-
-         {/* <VdownPages /> */}
       </main>
    );
 };

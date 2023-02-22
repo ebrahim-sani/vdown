@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { Suspense, useState } from "react";
-import { FaArrowDown } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { Inter } from "@next/font/google";
 import Loading from "./loading";
 import millify from "millify";
@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const VidDetails = ({ videoDetails, activeAudFormats, activeVidFormats }) => {
+const VidDetails = ({ videoDetails, activeVidFormats }) => {
    const [downUrl, setDownUrl] = useState("");
 
    const { title, ownerChannelName, thumbnails, author } = videoDetails;
@@ -99,7 +99,7 @@ const VidDetails = ({ videoDetails, activeAudFormats, activeVidFormats }) => {
                            <button
                               className={`flex items-center p-2 bg-black rounded-md text-gray-200 shadow-md ${inter.className}`}
                            >
-                              Download <FaArrowDown />
+                              Get Video <FaArrowRight />
                            </button>
                         </Link>
                      </div>

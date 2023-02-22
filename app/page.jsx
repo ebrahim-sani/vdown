@@ -1,76 +1,80 @@
+import React from "react";
+import Form from "./Form";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "./page.module.css";
-import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
+
+import { FaYoutube } from "react-icons/fa";
 import Navbar from "./Navbar";
+import VdownPages from "./VdownPages";
+import Showcase from "./Showcase";
+import { showcaseData } from "@/Utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+async function YtDown() {
    return (
-      <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
-         <Navbar />
+      <main>
+         <div className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
+            <Navbar />
 
-         <div className={styles.center}>
-            <Image
-               className={styles.logo}
-               src="/center_logo1.png"
-               alt="Next.js Logo"
-               width={250}
-               height={200}
-               priority
-            />
-            <div className={styles.thirteen}>
-               <Image
-                  src="/vdown.png"
-                  alt="cloud_img"
-                  width={40}
-                  height={31}
-                  priority
-               />
+            <div className="flex md:w-[500px] justify-center flex-col items-center relative py-[2rem] gap-8">
+               <div className="flex items-center">
+                  <Image
+                     className={styles.logo}
+                     src="/center_logo1.png"
+                     alt="Next.js Logo"
+                     width={250}
+                     height={200}
+                     priority
+                  />
+                  <div className={styles.thirteen}>
+                     <FaYoutube size={30} />
+                  </div>
+               </div>
+
+               <div className="flex w-full flex-col items-center gap-1">
+                  <Form />
+                  <p
+                     className={`text-center max-[768px]:px-1 text-xs ${inter.className}`}
+                  >
+                     By clicking{" "}
+                     <span className="font-semibold">Get Video</span> you accept
+                     our{" "}
+                     <span className="font-semibold underline hover:cursor-pointer">
+                        Terms & Conditions
+                     </span>
+                  </p>
+               </div>
             </div>
+
+            <p
+               className={`${inter.className} flex justify-center items-center text-black font-semibold mt-2`}
+            >
+               <span>-&gt;</span> Download Video in 3 Easy Steps{" "}
+               <span>&lt;-</span>
+            </p>
+            <VdownPages />
          </div>
 
-         <div className={`${styles.grid} gap-2`}>
-            <a href="/vdown-rheels" className={`${styles.card} customBorder`}>
-               <h2 className={inter.className}>
-                  <div className="flex items-center gap-3">
-                     <FaInstagram size={30} />
-                     Rheels Downloader <span>-&gt;</span>
-                  </div>
-               </h2>
-               <p className={inter.className}>
-                  Click and go to Rheels downloader page, it is just simple.
-                  Paste your link, click download and boom...its on your device.{" "}
-                  <br /> Easy right ;)
-               </p>
-            </a>
-
-            <a href="/vdown-youtube" className={`${styles.card} customBorder`}>
-               <h2 className={inter.className}>
-                  <div className="flex items-center gap-3">
-                     <FaYoutube size={30} />
-                     YouTube Downloader <span>-&gt;</span>
-                  </div>
-               </h2>
-               <p className={inter.className}>
-                  Explore the Next.js 13 playground.
-               </p>
-            </a>
-
-            <a href="/vdown-tiktok" className={`${styles.card} customBorder`}>
-               <h2 className={inter.className}>
-                  <div className="flex items-center gap-3">
-                     <FaTiktok size={30} />
-                     TikTok Downloader <span>-&gt;</span>
-                  </div>
-               </h2>
-               <p className={inter.className}>
-                  Instantly deploy your Next.js site to a shareable URL with
-                  Vercel.
-               </p>
-            </a>
+         <div>
+            {showcaseData.map((showcase, i) => (
+               <div
+                  key={i}
+                  className={`flex flex-col gap-6 flex-1 max-[768px]:p-2 md:min-h-[100vh] px-[1rem] max-[768px]:rounded-md md:px-[12rem] md:py-[2rem] items-center justify-start md:justify-center max-[768px]:shadow-md ${styles.card} shadow-sm customBorder`}
+               >
+                  <Showcase
+                     index={i}
+                     pageTitle={i === 0 && "How to Use"}
+                     title={showcase.title}
+                     description={showcase.description}
+                     imgUrl={showcase.imgUrl}
+                  />
+               </div>
+            ))}
          </div>
       </main>
    );
 }
+
+export default YtDown;
