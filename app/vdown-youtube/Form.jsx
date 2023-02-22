@@ -11,7 +11,16 @@ const Form = () => {
    const handleSubmit = async (e) => {
       e.preventDefault();
       if (!targetUrl) return;
-      router.push(`/vdown-youtube?term=${targetUrl}`);
+      if (targetUrl.includes("watch")) {
+         const regex = /[?&]v=([^&#]*)/;
+         const match = regex.exec(targetUrl);
+         // console.log(match);
+         const execUrl = match && match[1];
+
+         router.push(`/vdown-youtube/https://youtu.be/${execUrl}`);
+      } else {
+         router.push(`/vdown-youtube/${targetUrl}`);
+      }
    };
 
    const handlePaste = () => {

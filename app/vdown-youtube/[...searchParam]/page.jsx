@@ -1,33 +1,25 @@
 import React from "react";
-import { fetchData } from "@/Utils/FetchData";
-import Form from "./Form";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "../page.module.css";
-
+import Form from "../Form";
 import { FaYoutube } from "react-icons/fa";
-import Navbar from "../Navbar";
-import VdownPages from "../VdownPages";
-import VidDetails from "./VidDetails";
+import Image from "next/image";
+import Navbar from "@/app/Navbar";
+import VidDetails from "../VidDetails";
+import styles from "../../page.module.css";
+import { Inter } from "@next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// async function getData(url) {
-//    const data = await fetch(url, { cache: "no-store" });
-//    return data.json();
-// }
+const page = async ({ params }) => {
+   // console.log(params.searchParam[2]);
 
-async function YtDown({ searchParams }) {
-   // let fetchedData;
-   // if (searchParams.term) {
-   //    const result = await getData(
-   //       "https://vdown-api.vercel.app/api/get-video-info/https://youtu.be/0Qv7Pe-FvNs",
-   //    );
-   //    console.log(result);
-   //    fetchedData = result;
-   // }
-
-   // console.log(fetchedData);
+   const result = await fetch(
+      `https://vdown-api.vercel.app/api/get-video-info/${params.searchParam[2]}`,
+   );
+   const response = await result.json();
+   const {
+      data: { videoDetails, activeVidFormats, activeAudFormats },
+   } = response;
+   // console.log(response.data);
 
    return (
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
@@ -63,12 +55,18 @@ async function YtDown({ searchParams }) {
          </div>
 
          <div className="">
-            {/* {fetchedData && <VidDetails fetchedData={fetchedData} />} */}
+            {response && (
+               <VidDetails
+                  videoDetails={videoDetails}
+                  activeVidFormats={activeVidFormats}
+                  activeAudFormats={activeAudFormats}
+               />
+            )}
          </div>
 
-         <VdownPages />
+         {/* <VdownPages /> */}
       </main>
    );
-}
+};
 
-export default YtDown;
+export default page;

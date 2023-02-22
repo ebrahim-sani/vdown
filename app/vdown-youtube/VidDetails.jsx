@@ -7,18 +7,13 @@ import { Inter } from "@next/font/google";
 import Loading from "./loading";
 import millify from "millify";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const VidDetails = ({ fetchedData }) => {
+const VidDetails = ({ videoDetails, activeAudFormats, activeVidFormats }) => {
    const [downUrl, setDownUrl] = useState("");
-   const {
-      videoDetails: { title, ownerChannelName, thumbnails, author },
-      activeVidFormats,
-      activeAudFormats,
-   } = fetchedData;
-   const router = useRouter();
+
+   const { title, ownerChannelName, thumbnails, author } = videoDetails;
 
    return (
       <>
