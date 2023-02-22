@@ -20,12 +20,12 @@ const VidDetails = ({ videoDetails, activeAudFormats, activeVidFormats }) => {
          <Suspense fallback={<Loading />}>
             <main className="max-w-[1000px] py-4">
                <div className="relative flex flex-col md:flex-row items-start gap-2 p-2 customBorder">
-                  <div className="flex flex-[0.5] flex-col items-start gap-1 border-none md:border-r-4 border-gray-800">
+                  <div className="flex flex-[0.65] flex-col items-start gap-1 border-none md:border-r-4 border-gray-800">
                      <Image
                         src={thumbnails[thumbnails.length - 1].url}
                         alt="thumbnail"
-                        width={400}
-                        height={400}
+                        width={500}
+                        height={500}
                         className="rounded-md w-full"
                      />
                      <div className="flex flex-col items-start gap-2">
@@ -57,9 +57,9 @@ const VidDetails = ({ videoDetails, activeAudFormats, activeVidFormats }) => {
                         </div>
                      </div>
                   </div>
-                  <div className="flex flex-[0.5] flex-col items-start gap-1 w-full">
+                  <div className="flex flex-[0.35] flex-col items-start gap-1 w-full">
                      <p className={`font-bold text-black ${inter.className}`}>
-                        Video Formats
+                        Select Formats
                      </p>
                      <div className="flex flex-wrap gap-1">
                         {activeVidFormats.map((vid, i) => (
@@ -73,7 +73,7 @@ const VidDetails = ({ videoDetails, activeAudFormats, activeVidFormats }) => {
                         ))}
                      </div>
 
-                     <p className={`font-bold text-black ${inter.className}`}>
+                     {/* <p className={`font-bold text-black ${inter.className}`}>
                         Audio Formats
                      </p>
                      <div className="flex flex-wrap gap-1">
@@ -86,7 +86,7 @@ const VidDetails = ({ videoDetails, activeAudFormats, activeVidFormats }) => {
                               {aud.audioBitrate}
                            </p>
                         ))}
-                     </div>
+                     </div> */}
 
                      <div className="h-[1px] bg-gray-500 w-full my-1 " />
 

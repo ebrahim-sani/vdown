@@ -1,5 +1,4 @@
 import React from "react";
-import { fetchData } from "@/Utils/FetchData";
 import Form from "./Form";
 import Image from "next/image";
 import { Inter } from "@next/font/google";

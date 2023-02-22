@@ -54,7 +54,8 @@ const page = async ({ params: { searchParam } }) => {
    const {
       data: { videoDetails, activeVidFormats, activeAudFormats },
    } = response;
-   // console.log(response.data);
+   // console.log(activeVidFormats);
+   // console.log(activeAudFormats);
 
    return (
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
