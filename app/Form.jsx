@@ -17,9 +17,9 @@ const Form = () => {
          // console.log(match);
          const execUrl = match && match[1];
 
-         router.push(`/vdown-youtube/https://youtu.be/${execUrl}`);
+         router.push(`/https://youtu.be/${execUrl}`);
       } else {
-         router.push(`/vdown-youtube/${targetUrl}`);
+         router.push(`/${targetUrl}`);
       }
    };
 
