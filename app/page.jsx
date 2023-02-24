@@ -49,7 +49,7 @@ async function YtDown() {
             </div>
 
             <p
-               className={`${inter.className} flex justify-center items-center text-black font-semibold mt-2`}
+               className={`${inter.className} flex justify-center items-center max-[768px]:text-[12px] pb-2 text-black font-semibold mt-2`}
             >
                <span>-&gt;</span> Download Video in 3 Easy Steps{" "}
                <span>&lt;-</span>

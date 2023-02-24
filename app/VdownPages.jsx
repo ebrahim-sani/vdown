@@ -15,7 +15,7 @@ const VdownPages = () => {
          <div className={`${styles.grid} gap-2`}>
             <div className={`${styles.card} shadow-sm customBorder`}>
                <h2 className={inter.className}>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 text-black max-[768px]:text-sm">
                      <BiLink size={30} />
                      Get The Link of Your Video
                   </div>
@@ -25,7 +25,7 @@ const VdownPages = () => {
 
             <div className={`${styles.card} shadow-sm customBorder`}>
                <h2 className={inter.className}>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 text-black max-[768px]:text-sm">
                      <MdScreenSearchDesktop size={30} />
                      Paste in The Input Field & Search
                   </div>
@@ -35,7 +35,7 @@ const VdownPages = () => {
 
             <div className={`${styles.card} shadow-sm customBorder`}>
                <h2 className={inter.className}>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 text-black max-[768px]:text-sm">
                      <SlOptionsVertical size={20} />
                      Click 3-Dot Option & Download
                   </div>

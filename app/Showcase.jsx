@@ -8,17 +8,17 @@ const Showcase = ({ pageTitle, title, description, imgUrl, index }) => {
             {pageTitle}
          </h2>
          <div
-            className={`flex w-full flex-col ${
+            className={`flex w-full gap-2 flex-col ${
                index === 1
                   ? "md:flex-row-reverse md:gap-10"
                   : "md:flex-row md:gap-4 "
             }  items-center justify-between`}
          >
-            <div className="flex flex-col items-start gap-1 flex-[0.45]">
+            <div className="flex max-[768px]:w-full flex-col items-start gap-1 md:flex-[0.45]">
                <h3>{title}</h3>
                <p>{description}</p>
             </div>
-            <div className="flex w-full items-end flex-[0.55] rounded-sm">
+            <div className="flex w-full items-end md:flex-[0.55] rounded-sm">
                <Image
                   src={imgUrl}
                   width={500}
