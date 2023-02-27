@@ -22,21 +22,21 @@ export const pageData = {
 
 export const showcaseData = [
    {
-      title: "Click The Option",
+      title: "Paste Your Url",
       description:
-         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias vel deserunt ipsa dicta quis odit. Facilis assumenda amet ipsam sint reiciendis explicabo, consequatur corrupti culpa, voluptates, eum illo ullam quasi?",
+         "Get the video url or link for the video you want to download and click that little icon to paste it in to the input field, then click `Search Video` button to get the video's data if its' available or a valid url.",
+      imgUrl: "/vdown_home.png",
+   },
+   {
+      title: "Click The 3-dot Icon",
+      description:
+         "After you search your target video, select resolution, and click `Get Video` button, you will be taken to the videos' tab. Click that 3 dot option, & some buttons will pop-up right there. It just easy",
       imgUrl: "/showcase.png",
    },
    {
-      title: "Click The Option",
+      title: "Click Download",
       description:
-         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias vel deserunt ipsa dicta quis odit. Facilis assumenda amet ipsam sint reiciendis explicabo, consequatur corrupti culpa, voluptates, eum illo ullam quasi?",
-      imgUrl: "/showcase.png",
-   },
-   {
-      title: "Click The Option",
-      description:
-         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias vel deserunt ipsa dicta quis odit. Facilis assumenda amet ipsam sint reiciendis explicabo, consequatur corrupti culpa, voluptates, eum illo ullam quasi?",
-      imgUrl: "/showcase.png",
+         "After you click the 3 dot icon, three buttons will pop-up and you will see download among them. Click it, and boom..your video will start downloading. Now your device is proud to have that sweet melody inside that video.",
+      imgUrl: "/download_page.png",
    },
 ];

@@ -36,9 +36,7 @@ const Navbar = () => {
             {deskMenus.map((menu, i) => (
                <li
                   onClick={() =>
-                     router.push(
-                        `/vdown-${menu.split(" ")[0].toLocaleLowerCase()}`,
-                     )
+                     router.push(`/${menu.split(" ")[0].toLocaleLowerCase()}`)
                   }
                   key={i}
                   className={`uppercase hover:underline underline-offset-1 cursor-pointer ${
