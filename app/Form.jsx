@@ -59,7 +59,7 @@ const Form = () => {
                </div>
             </div>
             <button
-               className={`max-[767px]:w-full bg-black p-2 rounded-lg cursor-pointer text-gray-200 ${
+               className={`max-[767px]:w-full border-black bg-black p-2 rounded-lg cursor-pointer text-gray-200 ${
                   !targetUrl && "hover:cursor-not-allowed"
                }`}
                type="submit"

@@ -14,7 +14,7 @@ const VidDetails = ({ videoDetails, activeVidFormats }) => {
    const [downUrl, setDownUrl] = useState("");
 
    const { title, ownerChannelName, thumbnails, author } = videoDetails;
-   console.log(downUrl);
+   // console.log(downUrl);
    return (
       <>
          <Suspense fallback={<Loading />}>
@@ -61,7 +61,7 @@ const VidDetails = ({ videoDetails, activeVidFormats }) => {
                      <p className={`font-bold text-black ${inter.className}`}>
                         Select Formats
                      </p>
-                     <div className="flex w-full md:w-1/2 lg:w-1/3 xl:w-1/5 flex-wrap gap-1">
+                     <div className="flex w-full  flex-wrap gap-1">
                         {activeVidFormats.map((vid, i) => (
                            <>
                               <ul class="flex flex-1 flex-row w-full items-center gap-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600">
@@ -101,6 +101,7 @@ const VidDetails = ({ videoDetails, activeVidFormats }) => {
                         >
                            <button
                               className={`flex items-center p-2 bg-black rounded-md text-gray-200 shadow-md ${inter.className}`}
+                              disabled={!downUrl}
                            >
                               Get Video <FaArrowRight />
                            </button>
