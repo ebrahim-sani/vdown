@@ -14,7 +14,7 @@ const VidDetails = ({ videoDetails, activeVidFormats }) => {
    const [downUrl, setDownUrl] = useState("");
 
    const { title, ownerChannelName, thumbnails, author } = videoDetails;
-
+   console.log(downUrl);
    return (
       <>
          <Suspense fallback={<Loading />}>
@@ -61,32 +61,35 @@ const VidDetails = ({ videoDetails, activeVidFormats }) => {
                      <p className={`font-bold text-black ${inter.className}`}>
                         Select Formats
                      </p>
-                     <div className="flex flex-wrap gap-1">
+                     <div className="flex w-full md:w-1/2 lg:w-1/3 xl:w-1/5 flex-wrap gap-1">
                         {activeVidFormats.map((vid, i) => (
-                           <p
-                              key={i}
-                              className={`p-2 cursor-pointer bg-black text-gray-200 shadow-md rounded-md ${inter.className} `}
-                              onClick={() => setDownUrl(vid.url)}
-                           >
-                              {vid.qualityLabel}
-                           </p>
+                           <>
+                              <ul class="flex flex-1 flex-row w-full items-center gap-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600">
+                                 <li
+                                    class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600
+                                 "
+                                 >
+                                    <div class="flex items-center pl-3">
+                                       <input
+                                          id="horizontal-list-radio-license"
+                                          type="radio"
+                                          value={downUrl}
+                                          onClick={() => setDownUrl(vid.url)}
+                                          name="list-radio"
+                                          className="w-4 h-4 text-black bg-gray-100 border-gray-300 focus:ring-black shadow-sm"
+                                       />
+                                       <label
+                                          for="horizontal-list-radio-license"
+                                          class="w-1/2 py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                       >
+                                          {vid.qualityLabel}
+                                       </label>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </>
                         ))}
                      </div>
-
-                     {/* <p className={`font-bold text-black ${inter.className}`}>
-                        Audio Formats
-                     </p>
-                     <div className="flex flex-wrap gap-1">
-                        {activeAudFormats.map((aud, i) => (
-                           <p
-                              key={i}
-                              className={`p-2 cursor-pointer bg-black text-gray-200 shadow-md rounded-md ${inter.className} `}
-                              onClick={() => setDownUrl(aud.url)}
-                           >
-                              {aud.audioBitrate}
-                           </p>
-                        ))}
-                     </div> */}
 
                      <div className="h-[1px] bg-gray-500 w-full my-1 " />
 
