@@ -61,13 +61,14 @@ const VidDetails = ({ videoDetails, activeVidFormats }) => {
                      <p className={`font-bold text-black ${inter.className}`}>
                         Select Formats
                      </p>
-                     <div className="flex w-full  flex-wrap gap-1">
+                     <div className="flex w-full flex-wrap gap-1">
                         {activeVidFormats.map((vid, i) => (
                            <>
                               <ul class="flex flex-1 flex-row w-full items-center gap-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600">
                                  <li
                                     class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600
                                  "
+                                    key={i}
                                  >
                                     <div class="flex items-center pl-3">
                                        <input
