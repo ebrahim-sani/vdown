@@ -84,9 +84,7 @@ const Navbar = () => {
                         <li
                            onClick={() => {
                               router.push(
-                                 `/vdown-${menu
-                                    .split(" ")[0]
-                                    .toLocaleLowerCase()}`,
+                                 `/${menu.split(" ")[0].toLocaleLowerCase()}`,
                               );
                               setToggleMenu((prev) => !prev);
                            }}

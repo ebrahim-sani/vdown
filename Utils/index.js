@@ -1,13 +1,6 @@
-export const mobileMenus = [
-   "YouTube Downloader",
-   "Rheels Downloader",
-   "TikTok Downloader",
-   "Terms & Conditions",
-   "Privacy Policy",
-   "About",
-];
+export const mobileMenus = ["Terms & Conditions", "Privacy Policy", "About Us"];
 
-export const deskMenus = ["About", "Privacy Policy", "Terms & Conditions"];
+export const deskMenus = ["About Us", "Privacy Policy", "Terms & Conditions"];
 
 export const pageData = {
    instaDesc:
