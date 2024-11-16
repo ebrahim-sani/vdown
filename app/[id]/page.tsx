@@ -10,14 +10,11 @@ import VidDetails from "@/components/vid-details";
 
 const fetchVideoInfo = async (id: string) => {
    try {
-      const result = await fetch(
-         "https://vdown-git-vdown-new-ebrahimsanis-projects.vercel.app/api/get-vid-details",
-         {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(id),
-         },
-      );
+      const result = await fetch("/api/get-vid-details", {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(id),
+      });
 
       if (!result.ok) {
          console.log("Response Error:", result.statusText);

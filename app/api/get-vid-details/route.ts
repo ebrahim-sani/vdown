@@ -19,13 +19,14 @@ export async function POST(req: Request): Promise<Response> {
       const activeVidFormats = formats.filter((f) => f.hasVideo && f.hasAudio);
       const activeAudFormats = formats.filter((f) => !f.hasVideo && f.hasAudio);
 
+      console.log(activeVidFormats);
+
       const data = {
          videoDetails,
          formats,
          activeVidFormats,
          activeAudFormats,
       };
-      console.log(data);
       return Response.json(data);
    } catch (error) {
       console.log("Error processing video information:", error);
