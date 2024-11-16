@@ -1,7 +1,21 @@
 import Image from "next/image";
 import React from "react";
 
-const Showcase = ({ pageTitle, title, description, imgUrl, index }) => {
+type pageProps = {
+   pageTitle: string | boolean;
+   title: string;
+   description: string;
+   imgUrl: string;
+   index: number;
+};
+
+const Showcase = ({
+   pageTitle,
+   title,
+   description,
+   imgUrl,
+   index,
+}: pageProps) => {
    return (
       <div className="flex flex-col items-center gap-6">
          <h2 className="flex text-xl items-center justify-center">

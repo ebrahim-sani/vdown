@@ -4,12 +4,9 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import React, { useState } from "react";
 import { TbMenu } from "react-icons/tb";
-import { Inter } from "@next/font/google";
-import styles from "./page.module.css";
+import styles from "../app/page.module.css";
 import { FaTimes } from "react-icons/fa";
-import { deskMenus, mobileMenus } from "@/Utils/index";
-
-const inter = Inter({ subsets: ["latin"] });
+import { deskMenus, mobileMenus } from "@/utils";
 
 const Navbar = () => {
    const [toggleMenu, setToggleMenu] = useState(false);
@@ -30,9 +27,7 @@ const Navbar = () => {
             </a>
          </div>
 
-         <ul
-            className={` ${inter.className} hidden md:flex items-center gap-3`}
-         >
+         <ul className="hidden md:flex items-center gap-3">
             {deskMenus.map((menu, i) => (
                <li
                   onClick={() =>
@@ -77,9 +72,7 @@ const Navbar = () => {
                      </div>
                      <div className="flex-[0.2]"></div>
                   </div>
-                  <ul
-                     className={` ${inter.className} flex flex-col items-center gap-5`}
-                  >
+                  <ul className="flex flex-col items-center gap-5">
                      {mobileMenus.map((menu, i) => (
                         <li
                            onClick={() => {

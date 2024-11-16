@@ -37,7 +37,7 @@ const Footer = () => {
                />
             </Link>
          </div>
-         <d className="sm:w-[90%] w-full h-[0.25px] bg-gray-400 mt-5" />
+         <div className="sm:w-[90%] w-full h-[0.25px] bg-gray-400 mt-5" />
          <div className="sm:w-[90%] w-full flex justify-between items-center mt-3">
             <Right title="&copy;vdown 2023" />
             <Right title="All Rights Reserved" />
@@ -48,11 +48,15 @@ const Footer = () => {
 
 export default Footer;
 
-const Right = ({ title, customStyle }) => (
-   <p className={`text-sm text-center ${customStyle}`}>{title}</p>
-);
+const Right = ({
+   title,
+   customStyle,
+}: {
+   title: string;
+   customStyle?: string;
+}) => <p className={`text-sm text-center ${customStyle}`}>{title}</p>;
 
-const FooterLink = ({ url, title }) => {
+const FooterLink = ({ url, title }: { url: string; title: string }) => {
    return (
       <Link href={`/${url}`}>
          <p className="mx-2 max-[768px]:text-sm cursor-pointer">{title}</p>
