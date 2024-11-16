@@ -3,8 +3,6 @@
 import { ImSpinner8 } from "react-icons/im";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { BiPaste } from "react-icons/bi";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Clipboard, Search } from "lucide-react";

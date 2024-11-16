@@ -7,6 +7,7 @@ import { TbMenu } from "react-icons/tb";
 import styles from "../app/page.module.css";
 import { FaTimes } from "react-icons/fa";
 import { deskMenus, mobileMenus } from "@/utils";
+import Link from "next/link";
 
 const Navbar = () => {
    const [toggleMenu, setToggleMenu] = useState(false);
@@ -15,7 +16,7 @@ const Navbar = () => {
    return (
       <main className="relative flex items-center justify-between text-sm max-w-customWidth w-full z-[2] font-customFont">
          <div className="">
-            <a href="/">
+            <Link href="/">
                <Image
                   src="/vdown_logo.png"
                   alt="vdown_logo"
@@ -24,7 +25,7 @@ const Navbar = () => {
                   height={200}
                   priority
                />
-            </a>
+            </Link>
          </div>
 
          <ul className="hidden md:flex items-center gap-3">

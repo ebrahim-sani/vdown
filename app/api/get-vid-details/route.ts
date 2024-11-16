@@ -10,11 +10,11 @@ export async function POST(req: Request): Promise<Response> {
 
    try {
       // Parse request body
-      const { vidId }: { vidId: string } = await req.json();
+      const { id }: { id: string } = await req.json();
 
       // Fetch video details and formats
-      const vidInfo: videoInfo = await ytdl.getBasicInfo(vidId);
-      const vidFormat: videoInfo = await ytdl.getInfo(vidId);
+      const vidInfo: videoInfo = await ytdl.getBasicInfo(id);
+      const vidFormat: videoInfo = await ytdl.getInfo(id);
       const { videoDetails } = vidInfo;
       const { formats } = vidFormat;
 

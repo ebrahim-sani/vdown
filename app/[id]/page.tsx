@@ -6,11 +6,14 @@ import Navbar from "@/components/navbar";
 import Form from "@/components/form";
 import VidDetails from "@/components/vid-details";
 
-const fetchVideoInfo = async (searchParam: string) => {
+// https://www.youtube.com/watch?v=eZvji8Chxak
+
+const fetchVideoInfo = async (id: string) => {
    try {
       const result = await fetch("/api/get-vid-details}", {
+         method: "POST",
          headers: { "Content-Type": "application/json" },
-         cache: "no-store",
+         body: JSON.stringify(id),
       });
 
       if (!result.ok) {

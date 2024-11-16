@@ -7,6 +7,12 @@ import Image from "next/image";
 import { FaYoutube } from "react-icons/fa";
 import styles from "./page.module.css";
 
+type ShowcaseItem = {
+   title: string;
+   description: string;
+   imgUrl: string;
+};
+
 export default function Home() {
    return (
       <main>
@@ -51,7 +57,7 @@ export default function Home() {
             <VdownPages />
          </div>
 
-         {showcaseData.map((showcase: any, i: number) => (
+         {showcaseData.map((showcase: ShowcaseItem, i: number) => (
             <div
                key={i}
                className={`flex flex-col gap-6 flex-1 max-[768px]:p-2 md:min-h-[100vh] px-[1rem] max-[768px]:rounded-md md:px-[12rem] md:py-[2rem] items-center justify-start md:justify-center max-[768px]:shadow-md ${styles.card} shadow-sm customBorder`}

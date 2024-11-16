@@ -1,3 +1,9 @@
+interface ShowcaseItem {
+   title: string;
+   description: string;
+   imgUrl: string;
+}
+
 export const mobileMenus = ["Terms & Conditions", "Privacy Policy", "About Us"];
 
 export const deskMenus = ["About Us", "Privacy Policy", "Terms & Conditions"];
@@ -13,7 +19,7 @@ export const pageData = {
       "After selecting format for the video you want to download, hit the Get Video button..That will take you to a new tab. Click 3 dot option, and then Download.",
 };
 
-export const showcaseData = [
+export const showcaseData: ShowcaseItem[] = [
    {
       title: "Paste Your Url",
       description:
