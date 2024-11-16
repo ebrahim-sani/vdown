@@ -10,7 +10,7 @@ import VidDetails from "@/components/vid-details";
 
 const fetchVideoInfo = async (id: string) => {
    try {
-      const result = await fetch("/api/get-vid-details}", {
+      const result = await fetch("http://localhost:3000/api/get-vid-details", {
          method: "POST",
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify(id),
@@ -20,39 +20,26 @@ const fetchVideoInfo = async (id: string) => {
          console.log("Response Error:", result.statusText);
       }
 
-      const contentType = result.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-         const response = await result.json();
-         return response;
-      } else {
-         const rawText = await result.text();
-         console.log("Unexpected content-type. Response text:", rawText);
-      }
+      const response = await result.json();
+      console.log(response);
+      return response;
    } catch (error) {
       console.log("Fetch or Parsing Error:", error);
    }
 };
 
 export default async function Page({
-   searchParam,
+   params,
 }: {
-   searchParam: { id: string };
+   params: Promise<{ id: string }>;
 }) {
-   let videoDetails = null;
-   let activeVidFormats = [];
+   console.log((await params).id);
 
-   try {
-      const response = await fetchVideoInfo(searchParam.id);
-      const { data } = response;
+   const response = await fetchVideoInfo((await params).id);
+   const { videoDetails, activeVidFormats } = response;
 
-      if (!data || !data.videoDetails || !data.activeVidFormats) {
-         console.log("Incomplete response data");
-      }
-
-      videoDetails = data.videoDetails;
-      activeVidFormats = data.activeVidFormats;
-   } catch (error) {
-      console.log(error);
+   if (!videoDetails || !activeVidFormats) {
+      console.log("Incomplete response data");
    }
 
    return (
@@ -88,8 +75,8 @@ export default async function Page({
 
          <div>
             <VidDetails
-               videoDetails={videoDetails}
                activeVidFormats={activeVidFormats}
+               videoDetails={videoDetails}
             />
          </div>
       </main>

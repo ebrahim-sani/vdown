@@ -45,9 +45,8 @@ const Form = () => {
          router.push(`/${videoId}`);
       } else {
          console.log("Invalid YouTube URL");
+         setIsSubmitting(false);
       }
-
-      router.push("/");
    };
    const handlePaste = () => {
       navigator.clipboard.readText().then((clipText) => setTargetUrl(clipText));
