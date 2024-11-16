@@ -9,26 +9,23 @@ export async function POST(req: Request): Promise<Response> {
    }
 
    try {
-      // Parse request body
       const { id }: { id: string } = await req.json();
 
-      // Fetch video details and formats
       const vidInfo: videoInfo = await ytdl.getBasicInfo(id);
       const vidFormat: videoInfo = await ytdl.getInfo(id);
       const { videoDetails } = vidInfo;
       const { formats } = vidFormat;
 
-      // Filter formats into active video and audio formats
       const activeVidFormats = formats.filter((f) => f.hasVideo && f.hasAudio);
       const activeAudFormats = formats.filter((f) => !f.hasVideo && f.hasAudio);
 
-      // Structure response data
       const data = {
          videoDetails,
          formats,
          activeVidFormats,
          activeAudFormats,
       };
+      console.log(data);
       return Response.json(data);
    } catch (error) {
       console.log("Error processing video information:", error);

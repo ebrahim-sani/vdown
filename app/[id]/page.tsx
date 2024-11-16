@@ -10,11 +10,14 @@ import VidDetails from "@/components/vid-details";
 
 const fetchVideoInfo = async (id: string) => {
    try {
-      const result = await fetch("http://localhost:3000/api/get-vid-details", {
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify(id),
-      });
+      const result = await fetch(
+         "https://vdown-git-vdown-new-ebrahimsanis-projects.vercel.app/api/get-vid-details",
+         {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(id),
+         },
+      );
 
       if (!result.ok) {
          console.log("Response Error:", result.statusText);
@@ -36,7 +39,8 @@ export default async function Page({
    console.log((await params).id);
 
    const response = await fetchVideoInfo((await params).id);
-   const { videoDetails, activeVidFormats } = response;
+   const { videoDetails, activeVidFormats } = await response;
+   console.log(response);
 
    if (!videoDetails || !activeVidFormats) {
       console.log("Incomplete response data");
