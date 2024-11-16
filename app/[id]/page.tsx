@@ -33,16 +33,16 @@ const fetchVideoInfo = async (id: string) => {
    }
 };
 
-export default async function page({
+export default async function Page({
    searchParam,
 }: {
-   searchParam: Promise<{ id: string }>;
+   searchParam: { id: string };
 }) {
    let videoDetails = null;
    let activeVidFormats = [];
 
    try {
-      const response = await fetchVideoInfo((await searchParam).id);
+      const response = await fetchVideoInfo(searchParam.id);
       const { data } = response;
 
       if (!data || !data.videoDetails || !data.activeVidFormats) {
