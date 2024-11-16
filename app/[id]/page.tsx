@@ -52,11 +52,7 @@ export default async function page({
       videoDetails = data.videoDetails;
       activeVidFormats = data.activeVidFormats;
    } catch (error) {
-      return (
-         <main className="flex flex-col justify-center items-center px-4 py-8 min-h-[100vh]">
-            <Navbar />
-         </main>
-      );
+      console.log(error);
    }
 
    return (
