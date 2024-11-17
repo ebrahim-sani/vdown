@@ -62,7 +62,7 @@ const Form = () => {
                body: JSON.stringify({ videoId }),
             });
 
-            console.log(response);
+            // console.log(response);
 
             if (!response.ok) throw new Error("Failed to fetch video details");
 
@@ -93,43 +93,54 @@ const Form = () => {
    };
 
    return (
-      <div className="w-full">
-         {/* Search Form */}
-         <form
-            onSubmit={handleSubmit}
-            className="w-full flex flex-col sm:flex-row items-center justify-between gap-3"
-         >
-            <div className="relative flex items-center flex-1 h-11 w-full">
-               <Search className="absolute left-3 h-4 w-4 text-muted-foreground" />
-               <Input
-                  type="url"
-                  placeholder="Paste your YouTube URL..."
-                  value={targetUrl}
-                  onChange={(e) => setTargetUrl(e.target.value)}
-                  className="pl-10 pr-10 w-full"
-               />
-               <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-0 hover:bg-transparent"
-                  onClick={handlePaste}
+      <>
+         <div className="flex w-full flex-col items-center gap-1">
+            <div className="w-full">
+               {/* Search Form */}
+               <form
+                  onSubmit={handleSubmit}
+                  className="w-full flex flex-col sm:flex-row items-center justify-between gap-3"
                >
-                  <Clipboard className="h-4 w-4 text-muted-foreground" />
-               </Button>
+                  <div className="relative flex items-center flex-1 h-11 w-full">
+                     <Search className="absolute left-3 h-4 w-4 text-muted-foreground" />
+                     <Input
+                        type="url"
+                        placeholder="Paste your YouTube URL..."
+                        value={targetUrl}
+                        onChange={(e) => setTargetUrl(e.target.value)}
+                        className="pl-10 pr-10 w-full"
+                     />
+                     <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon"
+                        className="absolute right-0 hover:bg-transparent"
+                        onClick={handlePaste}
+                     >
+                        <Clipboard className="h-4 w-4 text-muted-foreground" />
+                     </Button>
+                  </div>
+                  <Button
+                     className="max-sm:flex-1 max-sm:w-full"
+                     type="submit"
+                     disabled={!targetUrl || isSubmitting}
+                  >
+                     {isSubmitting ? (
+                        <ImSpinner8 className="text-white animate-spin" />
+                     ) : (
+                        "Search Video"
+                     )}
+                  </Button>
+               </form>
             </div>
-            <Button
-               className="flex-1 w-full"
-               type="submit"
-               disabled={!targetUrl || isSubmitting}
-            >
-               {isSubmitting ? (
-                  <ImSpinner8 className="text-white animate-spin" />
-               ) : (
-                  "Search Video"
-               )}
-            </Button>
-         </form>
+            <p className="text-center max-[768px]:px-1 text-xs">
+               By clicking <span className="font-semibold">Get Video</span> you
+               accept our{" "}
+               <span className="font-semibold underline hover:cursor-pointer">
+                  Terms & Conditions
+               </span>
+            </p>
+         </div>
 
          {/* Show this component only if there's Video Details */}
          {videoDetails && (
@@ -140,7 +151,7 @@ const Form = () => {
                />
             </div>
          )}
-      </div>
+      </>
    );
 };
 

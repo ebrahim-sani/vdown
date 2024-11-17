@@ -25,16 +25,7 @@ export default async function Page() {
                </div>
             </div>
 
-            <div className="flex w-full flex-col items-center gap-1">
-               <Form />
-               <p className="text-center max-[768px]:px-1 text-xs">
-                  By clicking <span className="font-semibold">Get Video</span>{" "}
-                  you accept our{" "}
-                  <span className="font-semibold underline hover:cursor-pointer">
-                     Terms & Conditions
-                  </span>
-               </p>
-            </div>
+            <Form />
          </div>
 
          {/* <div>

@@ -4,9 +4,9 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import millify from "millify";
-import Link from "next/link";
 import { VideoDetails } from "@/lib/types/videoDetails";
 import { VideoFormat } from "@/lib/types/activeVidFormat";
+import { Button } from "./ui/button";
 
 interface VidDetailsProps {
    videoDetails: VideoDetails;
@@ -17,6 +17,33 @@ const VidDetails = ({ videoDetails, activeVidFormats }: VidDetailsProps) => {
    const [downUrl, setDownUrl] = useState<string>("");
 
    const { title, ownerChannelName, thumbnails, author } = videoDetails;
+
+   const handleDownload = async (url: string) => {
+      if (!downUrl) return;
+
+      try {
+         const res = await fetch("/api/video", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ videoUrl: url, title }),
+         });
+
+         if (!res.ok) {
+            throw new Error("Failed to download video");
+         }
+
+         // Create a blob and force download
+         const blob = await res.blob();
+         const blobUrl = URL.createObjectURL(blob);
+         const a = document.createElement("a");
+         a.href = blobUrl;
+         a.download = `${title.replace(/[^\w\s-]/g, "")}.mp4`;
+         a.click();
+         URL.revokeObjectURL(blobUrl); // Clean up the URL object
+      } catch (error) {
+         console.error("Download error:", error);
+      }
+   };
 
    return (
       <main className="max-w-[1000px] py-4">
@@ -63,7 +90,6 @@ const VidDetails = ({ videoDetails, activeVidFormats }: VidDetailsProps) => {
                               <input
                                  id={`radio-${vid.itag}`}
                                  type="radio"
-                                 value={vid.url}
                                  onClick={() => setDownUrl(vid.url)}
                                  name="list-radio"
                                  className="w-4 h-4 text-black bg-gray-100 border-gray-300 focus:ring-black shadow-sm"
@@ -80,18 +106,17 @@ const VidDetails = ({ videoDetails, activeVidFormats }: VidDetailsProps) => {
                <div className="h-[1px] bg-gray-500 w-full my-1" />
 
                <div className="md:absolute bottom-3 right-2">
-                  <Link
-                     href={downUrl}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                  >
-                     <button
-                        className="flex items-center p-2 bg-black rounded-md text-gray-200 shadow-md"
-                        disabled={!downUrl}
+                  {downUrl ? (
+                     <Button
+                        onClick={() => handleDownload(videoDetails.video_url)}
                      >
-                        Get Video <FaArrowRight />
-                     </button>
-                  </Link>
+                        Download <FaArrowRight />
+                     </Button>
+                  ) : (
+                     <Button disabled>
+                        Download <FaArrowRight />
+                     </Button>
+                  )}
                </div>
             </div>
          </div>
