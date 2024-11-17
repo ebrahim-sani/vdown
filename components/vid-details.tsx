@@ -5,25 +5,8 @@ import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import millify from "millify";
 import Link from "next/link";
-
-interface VideoDetails {
-   title: string;
-   ownerChannelName: string;
-   thumbnails: { url: string }[];
-   author: {
-      thumbnails: { url: string }[];
-      subscriber_count: number;
-   };
-}
-
-interface VideoFormat {
-   itag: number;
-   url: string;
-   qualityLabel: string;
-   mimeType: string;
-   hasAudio: boolean;
-   hasVideo: boolean;
-}
+import { VideoDetails } from "@/lib/types/videoDetails";
+import { VideoFormat } from "@/lib/types/activeVidFormat";
 
 interface VidDetailsProps {
    videoDetails: VideoDetails;

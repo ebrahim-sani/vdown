@@ -6,43 +6,7 @@ import Navbar from "@/components/navbar";
 import Form from "@/components/form";
 import VidDetails from "@/components/vid-details";
 
-// https://www.youtube.com/watch?v=eZvji8Chxak
-
-const fetchVideoInfo = async (id: string) => {
-   try {
-      const result = await fetch("/api/get-vid-details", {
-         method: "POST",
-         headers: { "Content-Type": "application/json" },
-         body: JSON.stringify(id),
-      });
-
-      if (!result.ok) {
-         console.log("Response Error:", result.statusText);
-      }
-
-      const response = await result.json();
-      console.log(response);
-      return response;
-   } catch (error) {
-      console.log("Fetch or Parsing Error:", error);
-   }
-};
-
-export default async function Page({
-   params,
-}: {
-   params: Promise<{ id: string }>;
-}) {
-   console.log((await params).id);
-
-   const response = await fetchVideoInfo((await params).id);
-   const { videoDetails, activeVidFormats } = await response;
-   console.log(response);
-
-   if (!videoDetails || !activeVidFormats) {
-      console.log("Incomplete response data");
-   }
-
+export default async function Page() {
    return (
       <main className="flex flex-col justify-between items-center px-[1rem] md:px-[6rem] py-[2rem] min-h-[100vh]">
          <Navbar />
@@ -74,12 +38,12 @@ export default async function Page({
             </div>
          </div>
 
-         <div>
+         {/* <div>
             <VidDetails
                activeVidFormats={activeVidFormats}
                videoDetails={videoDetails}
             />
-         </div>
+         </div> */}
       </main>
    );
 }

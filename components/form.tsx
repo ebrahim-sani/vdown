@@ -1,74 +1,113 @@
 "use client";
 
-import { ImSpinner8 } from "react-icons/im";
+import React, { useState, useRef, FormEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import React, { FormEvent, useState } from "react";
+import { ImSpinner8 } from "react-icons/im";
+import { Clipboard, Search } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Clipboard, Search } from "lucide-react";
+import VidDetails from "./vid-details";
+import { VideoFormat } from "@/lib/types/activeVidFormat";
+import { VideoDetails } from "@/lib/types/videoDetails";
+
+type ApiResponse = {
+   videoDetails: VideoDetails;
+   activeVidFormats: VideoFormat[];
+};
 
 const Form = () => {
-   const [targetUrl, setTargetUrl] = useState("");
+   const [targetUrl, setTargetUrl] = useState<string>("");
    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+   const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
+   const [activeVidFormats, setActiveVidFormats] = useState<VideoFormat[]>([]);
+   const vidDetailsRef = useRef<HTMLDivElement | null>(null);
    const router = useRouter();
 
+   // Extract Video ID from the YouTube URL
    const extractVideoId = (url: string): string | null => {
-      try {
-         const patterns = [
-            /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&#]+)/, // Standard watch link
-            /(?:https?:\/\/)?youtu\.be\/([^?&#]+)/, // Shortened link with optional query parameters
-            /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([^?&#]+)/, // Embedded link
-         ];
+      const patterns = [
+         /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&#]+)/, // Standard watch link
+         /(?:https?:\/\/)?youtu\.be\/([^?&#]+)/, // Shortened link
+         /(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([^?&#]+)/, // Embedded link
+      ];
 
-         for (const pattern of patterns) {
-            const match = url.match(pattern);
-            if (match && match[1]) {
-               return match[1];
-            }
-         }
-
-         return null;
-      } catch (error) {
-         console.log("Error extracting video ID:", error);
-         return null;
+      for (const pattern of patterns) {
+         const match = url.match(pattern);
+         if (match && match[1]) return match[1];
       }
+
+      console.log("Invalid YouTube URL");
+      return null;
    };
 
-   const handleSubmit = (e: FormEvent) => {
+   // Auto-scroll to VidDetails component if there is video details
+   useEffect(() => {
+      if (videoDetails && vidDetailsRef.current) {
+         vidDetailsRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+   }, [videoDetails]);
+
+   const handleSubmit = async (e: FormEvent) => {
       e.preventDefault();
+
       if (!targetUrl) return;
       setIsSubmitting(true);
 
       const videoId = extractVideoId(targetUrl);
+      console.log("Extracted vid id ->", videoId);
+
       if (videoId) {
-         console.log("Extracted Video ID:", videoId);
-         router.push(`/${videoId}`);
+         try {
+            const response = await fetch("/api/get-vid-details", {
+               method: "POST",
+               headers: { "Content-Type": "application/json" },
+               body: JSON.stringify({ videoId }),
+            });
+
+            console.log(response);
+
+            if (!response.ok) throw new Error("Failed to fetch video details");
+
+            const data: ApiResponse = await response.json();
+            setVideoDetails(data.videoDetails);
+            setActiveVidFormats(data.activeVidFormats);
+
+            console.log("Video details fetched:", data);
+         } catch (error) {
+            console.error("Error fetching video details:", error);
+         } finally {
+            setIsSubmitting(false);
+         }
       } else {
          console.log("Invalid YouTube URL");
          setIsSubmitting(false);
       }
    };
-   const handlePaste = () => {
-      navigator.clipboard.readText().then((clipText) => setTargetUrl(clipText));
-   };
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setTargetUrl(e.target.value);
+   // Handle clipboard paste
+   const handlePaste = async () => {
+      try {
+         const clipText = await navigator.clipboard.readText();
+         setTargetUrl(clipText);
+      } catch (error) {
+         console.error("Failed to read clipboard:", error);
+      }
    };
 
    return (
       <div className="w-full">
+         {/* Search Form */}
          <form
             onSubmit={handleSubmit}
             className="w-full flex flex-col sm:flex-row items-center justify-between gap-3"
          >
-            <div className="relative flex items-center flex-1 h-11">
+            <div className="relative flex items-center flex-1 h-11 w-full">
                <Search className="absolute left-3 h-4 w-4 text-muted-foreground" />
                <Input
                   type="url"
                   placeholder="Paste your YouTube URL..."
                   value={targetUrl}
-                  onChange={handleChange}
+                  onChange={(e) => setTargetUrl(e.target.value)}
                   className="pl-10 pr-10 w-full"
                />
                <Button
@@ -82,7 +121,7 @@ const Form = () => {
                </Button>
             </div>
             <Button
-               className=""
+               className="flex-1 w-full"
                type="submit"
                disabled={!targetUrl || isSubmitting}
             >
@@ -93,6 +132,16 @@ const Form = () => {
                )}
             </Button>
          </form>
+
+         {/* Show this component only if there's Video Details */}
+         {videoDetails && (
+            <div ref={vidDetailsRef}>
+               <VidDetails
+                  activeVidFormats={activeVidFormats}
+                  videoDetails={videoDetails}
+               />
+            </div>
+         )}
       </div>
    );
 };
