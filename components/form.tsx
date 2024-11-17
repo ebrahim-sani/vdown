@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, FormEvent, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { ImSpinner8 } from "react-icons/im";
 import { Clipboard, Search } from "lucide-react";
 import { Input } from "./ui/input";
@@ -21,7 +20,6 @@ const Form = () => {
    const [videoDetails, setVideoDetails] = useState<VideoDetails | null>(null);
    const [activeVidFormats, setActiveVidFormats] = useState<VideoFormat[]>([]);
    const vidDetailsRef = useRef<HTMLDivElement | null>(null);
-   const router = useRouter();
 
    // Extract Video ID from the YouTube URL
    const extractVideoId = (url: string): string | null => {

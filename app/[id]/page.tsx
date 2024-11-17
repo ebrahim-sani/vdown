@@ -4,7 +4,6 @@ import Image from "next/image";
 import styles from "../page.module.css";
 import Navbar from "@/components/navbar";
 import Form from "@/components/form";
-import VidDetails from "@/components/vid-details";
 
 export default async function Page() {
    return (
